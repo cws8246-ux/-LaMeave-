@@ -335,33 +335,54 @@
         </div>
     </section>
 
-    <!-- Exclusive Features (TEXT CONTRAST IMPROVED) -->
+    <!-- Exclusive Features (ICONS REPLACED WITH SVGs for compatibility) -->
     <section class="py-32 bg-[#121212]">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="font-serif text-3xl md:text-4xl text-white text-center mb-20 editable-text" data-field="feat_title" contenteditable="false">Exclusive Amenities</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Item 1 -->
+                <!-- Item 1: EMS Training (Lightning Bolt SVG) -->
                 <div class="text-center p-8 border border-gray-800 hover:border-[#dfa67b] transition duration-500">
-                    <div class="text-4xl text-[#dfa67b] mb-6">⚡</div>
+                    <div class="text-4xl text-[#dfa67b] mb-6 inline-block">
+                        <svg class="w-8 h-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
                     <h4 class="text-lg text-white font-bold mb-3 editable-text" data-field="feat1_title" contenteditable="false">EMS Training</h4>
                     <p class="text-sm text-gray-400 leading-relaxed editable-text" data-field="feat1_desc" contenteditable="false">20분으로 6시간 효과를 내는<br>초밀도 근육 자극</p>
                 </div>
-                <!-- Item 2 -->
+                
+                <!-- Item 2: White Tanning (Shine/Star SVG) -->
                 <div class="text-center p-8 border border-gray-800 hover:border-[#dfa67b] transition duration-500">
-                    <div class="text-4xl text-[#dfa67b] mb-6">✨</div>
+                    <div class="text-4xl text-[#dfa67b] mb-6 inline-block">
+                        <svg class="w-8 h-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 3s.34.42.5.5c.24.23.44.43.7.67M22 12h-4m-7-7V2.5M10 20.5V22M20 18l-2-2M18 6l-2 2M6 18l2-2M6 6l2 2" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 17a5 5 0 100-10 5 5 0 000 10z" />
+                        </svg>
+                    </div>
                     <h4 class="text-lg text-white font-bold mb-3 editable-text" data-field="feat2_title" contenteditable="false">White Tanning</h4>
                     <p class="text-sm text-gray-400 leading-relaxed editable-text" data-field="feat2_desc" contenteditable="false">피부 톤 개선과 탄력을 위한<br>프리미엄 뷰티 솔루션</p>
                 </div>
-                <!-- Item 3 -->
+                
+                <!-- Item 3: Phantom Recovery (Comfort/Check SVG) -->
                 <div class="text-center p-8 border border-gray-800 hover:border-[#dfa67b] transition duration-500">
-                    <div class="text-4xl text-[#dfa67b] mb-6">🛋️</div>
+                    <div class="text-4xl text-[#dfa67b] mb-6 inline-block">
+                        <svg class="w-8 h-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.617 1.258a11.94 11.94 0 01-5.714 4.04M2.572 15.176a11.941 11.941 0 005.617 1.258m-5.617-1.258l-.05.05m0-.05l.05-.05M2 12h1m18 0h1m-1 0a9 9 0 10-18 0z" />
+                        </svg>
+                    </div>
                     <h4 class="text-lg text-white font-bold mb-3 editable-text" data-field="feat3_title" contenteditable="false">Phantom Recovery</h4>
                     <p class="text-sm text-gray-400 leading-relaxed editable-text" data-field="feat3_desc" contenteditable="false">바디프랜드 팬텀으로<br>완벽한 전신 피로 해소</p>
                 </div>
-                <!-- Item 4 -->
+                
+                <!-- Item 4: Data Tracking (Bar Chart SVG) -->
                 <div class="text-center p-8 border border-gray-800 hover:border-[#dfa67b] transition duration-500">
-                    <div class="text-4xl text-[#dfa67b] mb-6">📊</div>
+                    <div class="text-4xl text-[#dfa67b] mb-6 inline-block">
+                        <svg class="w-8 h-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m-4-8h8m-8 4h8m-8-8h8m-8 12h8m-8 4h8" />
+                            <rect x="3" y="10" width="18" height="11" rx="2" ry="2" />
+                        </svg>
+                    </div>
                     <h4 class="text-lg text-white font-bold mb-3 editable-text" data-field="feat4_title" contenteditable="false">Data Tracking</h4>
                     <p class="text-sm text-gray-400 leading-relaxed editable-text" data-field="feat4_desc" contenteditable="false">매 회차 정밀 분석을 통한<br>개인 맞춤형 로드맵</p>
                 </div>
