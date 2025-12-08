@@ -151,17 +151,12 @@
         </div>
     </div>
 
-    <!-- Hero Section (IMAGE RETAINED) -->
-    <section id="philosophy" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image with Overlay (Updated to a placeholder of a woman receiving treatment) -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1596700813876-03612809e0a8?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                 alt="Luxury Wellness Lounge - Woman receiving treatment" class="w-full h-full object-cover opacity-50"> <!-- Opacity slightly increased -->
-            <div class="absolute inset-0 bg-gradient-to-b from-[#0f0f0f] via-transparent to-[#0f0f0f]"></div>
-            <div class="absolute inset-0 bg-black/40"></div> <!-- Overlay slightly darker -->
-        </div>
+    <!-- Hero Section (IMAGE REMOVED) -->
+    <section id="philosophy" class="relative h-screen flex items-center justify-center overflow-hidden bg-[#0f0f0f]">
+        <!-- Removed Background Image and Overlays -->
+        <!-- Content is now centered on the dark background -->
 
-        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto animate-fade-in">
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto animate-fade-in pt-20"> <!-- Added pt-20 to clear the fixed navbar -->
             <p class="text-[#ff5e1e] font-bold tracking-[0.3em] text-sm md:text-base mb-6 uppercase editable-text" data-field="hero_subtitle" contenteditable="false">
                 French Chic Wellness Lounge
             </p>
