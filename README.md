@@ -46,17 +46,22 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
-        /* --- Graph Styles for Animation (IMPORTANT: height: 0 for smooth transition) --- */
+        /* --- Graph Styles for Animation --- */
         .bar-chart-bar {
             transition: height 1.5s ease-out;
-            height: 0; /* Initial state for animation */
+            height: 0; 
         }
-        .progress-ring-circle {
-            transition: stroke-dashoffset 1.5s ease-in-out;
-            transform: rotate(-90deg);
-            transform-origin: 50% 50%;
-            /* Initial state for animation, will be set by JS */
-            stroke-dashoffset: 1000; 
+
+        /* --- Touch Reaction Styles (NEW) --- */
+        .reaction-animation {
+            transition: transform 0.1s ease-out, background-color 0.3s, box-shadow 0.3s;
+        }
+        /* 클릭/터치 시 적용될 스타일 */
+        .reacted {
+            transform: scale(0.95);
+            /* CTA 버튼의 경우, 눌렸을 때 색상을 약간 어둡게 유지 */
+            background-color: #d14008 !important; 
+            box-shadow: 0 0 5px rgba(255, 94, 30, 0.5);
         }
 
         /* --- Editable Content Styles --- */
@@ -115,7 +120,10 @@
                 <button id="save-btn" class="hidden text-xs bg-green-900 text-green-100 px-3 py-1 rounded uppercase tracking-wider hover:bg-green-800 transition">
                     Save Changes
                 </button>
-                <a href="https://map.naver.com/p/search/%EC%B2%AD%EB%9D%98%ED%83%9C%EB%8B%9C/place/1491238486" target="_blank" class="bg-[#ff5e1e] text-white text-xs font-bold px-6 py-3 rounded-none hover:bg-[#d14008] transition tracking-widest">
+                <!-- RESERVE BUTTON: reaction-animation 클래스 추가 및 ID 부여 -->
+                <a id="navReserveBtn" 
+                   href="https://booking.naver.com/booking/13/bizes/374029/items/3508163?area=pll&lang=ko&startDate=2025-12-08&theme=place" target="_blank" 
+                   class="reaction-animation bg-[#ff5e1e] text-white text-xs font-bold px-6 py-3 rounded-none hover:bg-[#d14008] transition tracking-widest">
                     RESERVE
                 </a>
             </div>
@@ -151,12 +159,9 @@
         </div>
     </div>
 
-    <!-- Hero Section (IMAGE REMOVED) -->
+    <!-- Hero Section -->
     <section id="philosophy" class="relative h-screen flex items-center justify-center overflow-hidden bg-[#0f0f0f]">
-        <!-- Removed Background Image and Overlays -->
-        <!-- Content is now centered on the dark background -->
-
-        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto animate-fade-in pt-20"> <!-- Added pt-20 to clear the fixed navbar -->
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto animate-fade-in pt-20"> 
             <p class="text-[#ff5e1e] font-bold tracking-[0.3em] text-sm md:text-base mb-6 uppercase editable-text" data-field="hero_subtitle" contenteditable="false">
                 French Chic Wellness Lounge
             </p>
@@ -176,7 +181,7 @@
         </div>
     </section>
 
-    <!-- Philosophy Grid (TEXT CONTRAST IMPROVED) -->
+    <!-- Philosophy Grid -->
     <section class="py-24 px-6 bg-[#0f0f0f]">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-gray-800 border-t border-b border-gray-800">
             <!-- La -->
@@ -200,7 +205,7 @@
         </div>
     </section>
 
-    <!-- The Difference (Comparison Data - EMS GRAPH IMPROVED) -->
+    <!-- The Difference (Comparison Data - NUMBERS EMPHASIZED) -->
     <section id="difference" class="py-32 bg-[#121212] relative">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-24">
@@ -220,7 +225,6 @@
                     <div class="flex justify-around items-end h-64 pb-4 border-b border-gray-800 relative">
                         <!-- PT Bar -->
                         <div class="w-24 group relative">
-                            <!-- New label for EMS benefit -->
                             <div class="absolute -top-16 left-1/2 -translate-x-1/2 text-white text-xs font-medium bg-gray-900 px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap">일반 PT (50분)</div>
                             <div class="absolute -top-8 left-1/2 -translate-x-1/2 text-gray-500 text-sm font-bold opacity-0 group-hover:opacity-100 transition">45%</div>
                             <div class="bar-chart-bar bg-gradient-to-t from-gray-800 to-gray-600 w-full mx-auto rounded-t-sm" data-target-percent="45"></div>
@@ -229,7 +233,6 @@
                         
                         <!-- LaMeave Bar (Emphasized for EMS + Therapy) -->
                         <div class="w-24 group relative">
-                            <!-- New label for EMS benefit -->
                             <div class="absolute -top-16 left-1/2 -translate-x-1/2 text-white text-xs font-medium bg-[#ff5e1e] px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition whitespace-nowrap">EMS & 테라피 (70분)</div>
                             <div class="absolute -top-8 left-1/2 -translate-x-1/2 text-[#ff5e1e] text-lg font-bold opacity-0 group-hover:opacity-100 transition">85%</div>
                             <div class="bar-chart-bar bg-gradient-to-t from-[#8B3A15] to-[#ff5e1e] w-full mx-auto rounded-t-sm shadow-[0_0_20px_rgba(255,94,30,0.3)]" data-target-percent="85"></div>
@@ -246,38 +249,35 @@
                     <p class="text-xs text-gray-500 mt-6 text-right italic editable-text" data-field="graph1_note" contenteditable="false">*20분 EMS 트레이닝 기준의 운동 효과 및 테라피 결합 시너지 반영</p>
                 </div>
 
-                <!-- Graph 2: Circular Progress (Unchanged) -->
+                <!-- Graph 2: Number Focus (Simplified from Circle Graph) -->
                 <div class="glass-panel p-10 rounded-sm hover:border-[#ff5e1e]/30 transition duration-500">
-                    <h3 class="text-xl text-white font-light mb-8 border-l-2 border-[#ff5e1e] pl-4 editable-text" data-field="graph2_title" contenteditable="false">
+                    <h3 class="text-xl text-white font-light mb-16 border-l-2 border-[#ff5e1e] pl-4 editable-text" data-field="graph2_title" contenteditable="false">
                         체질 개선 완성도 및 지속성
                     </h3>
-                    <div class="flex justify-around items-center h-64">
-                        <!-- Circle Graph PT (data-percent for JS) -->
-                        <div class="relative w-32 h-32" data-radius="60" data-percent="30">
-                            <svg class="w-full h-full transform -rotate-90">
-                                <circle cx="64" cy="64" r="60" stroke="#333" stroke-width="4" fill="none"></circle>
-                                <circle id="pt-progress" cx="64" cy="64" r="60" stroke="#666" stroke-width="4" fill="none" stroke-dasharray="377" class="progress-ring-circle"></circle>
-                            </svg>
-                            <div class="absolute inset-0 flex items-center justify-center text-gray-500 font-bold text-xl editable-text" data-field="pt_percent" contenteditable="false">30%</div>
-                            <p class="text-center text-gray-500 text-xs mt-4 tracking-widest uppercase absolute -bottom-8 w-full">Normal PT</p>
+                    
+                    <div class="flex justify-around items-start text-center">
+                        <!-- Data Point: Normal PT -->
+                        <div class="w-1/2">
+                            <div class="text-6xl font-serif text-gray-500 font-bold mb-2 editable-text" data-field="pt_percent" contenteditable="false">30%</div>
+                            <p class="text-gray-500 text-sm tracking-widest uppercase">Normal PT</p>
+                            <p class="text-xs text-gray-700 mt-2 editable-text" data-field="pt_label_desc" contenteditable="false">단기 효과</p>
                         </div>
-                        <!-- Circle Graph LaMeave (data-percent for JS) -->
-                        <div class="relative w-40 h-40" data-radius="70" data-percent="95">
-                            <svg class="w-full h-full transform -rotate-90">
-                                <circle cx="80" cy="80" r="70" stroke="#333" stroke-width="6" fill="none"></circle>
-                                <circle id="lameave-progress" cx="80" cy="80" r="70" stroke="#ff5e1e" stroke-width="6" fill="none" stroke-dasharray="440" class="progress-ring-circle drop-shadow-[0_0_10px_rgba(255,94,30,0.5)]"></circle>
-                            </svg>
-                            <div class="absolute inset-0 flex items-center justify-center text-white font-bold text-3xl editable-text" data-field="lameave_percent" contenteditable="false">95%</div>
-                            <p class="text-center text-[#ff5e1e] text-xs mt-4 tracking-widest uppercase font-bold absolute -bottom-8 w-full">LaMeave</p>
+                        
+                        <!-- Data Point: LaMeave (Emphasized) -->
+                        <div class="w-1/2">
+                            <div class="text-8xl font-serif text-[#ff5e1e] font-bold mb-2 editable-text" data-field="lameave_percent" contenteditable="false">95%</div>
+                            <p class="text-[#ff5e1e] text-sm tracking-widest uppercase font-bold">LaMeave</p>
+                            <p class="text-xs text-gray-400 mt-2 editable-text" data-field="meave_label_desc" contenteditable="false">근본적 체질 개선</p>
                         </div>
                     </div>
+
                     <p class="text-xs text-gray-500 mt-10 text-right italic editable-text" data-field="graph2_note" contenteditable="false">*8가지 패턴 관리 및 항상성 회복 기준</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Program Flow (Vertical Luxury Timeline - TEXT CONTRAST IMPROVED) -->
+    <!-- Program Flow (Vertical Luxury Timeline) -->
     <section id="program" class="py-32 bg-[#0f0f0f]">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-20">
@@ -335,7 +335,7 @@
         </div>
     </section>
 
-    <!-- Exclusive Features (ICONS REPLACED WITH SVGs for compatibility) -->
+    <!-- Exclusive Features -->
     <section class="py-32 bg-[#121212]">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="font-serif text-3xl md:text-4xl text-white text-center mb-20 editable-text" data-field="feat_title" contenteditable="false">Exclusive Amenities</h2>
@@ -390,20 +390,21 @@
         </div>
     </section>
 
-    <!-- Footer (TEXT CONTRAST IMPROVED) -->
+    <!-- Footer -->
     <footer class="bg-black py-24 border-t border-gray-900">
         <div class="max-w-5xl mx-auto px-6 text-center">
             <h2 class="font-serif text-4xl text-white mb-8 editable-text" data-field="footer_cta" contenteditable="false">Begin Your Journey</h2>
             <p class="text-gray-400 mb-12 editable-text" data-field="footer_sub" contenteditable="false">진정한 변화를 위한 첫 걸음, 라 미브와 함께하세요.</p>
             
-            <a href="https://map.naver.com/p/search/%EC%B2%AD%EB%9D%98%ED%83%9C%EB%8B%9C/place/1491238486" target="_blank" class="inline-block border border-[#ff5e1e] text-[#ff5e1e] px-10 py-4 hover:bg-[#ff5e1e] hover:text-white transition duration-300 tracking-widest uppercase text-sm mb-16">
+            <!-- FOOTER BUTTON: reaction-animation 클래스 추가 및 ID 부여 -->
+            <a id="footerReserveBtn" 
+               href="https://booking.naver.com/booking/13/bizes/374029/items/3508163?area=pll&lang=ko&startDate=2025-12-08&theme=place" target="_blank" 
+               class="reaction-animation inline-block border border-[#ff5e1e] text-[#ff5e1e] px-10 py-4 hover:bg-[#ff5e1e] hover:text-white transition duration-300 tracking-widest uppercase text-sm mb-16">
                 Book Consultation
             </a>
 
             <div class="border-t border-gray-900 pt-12">
-                <!-- 전화번호 삭제 및 주소 마진 조정 (mb-2 -> mb-6) -->
                 <p class="text-gray-600 text-sm mb-6">인천 서구 중봉대로586번길 15 청연 프라자 906호</p>
-                <!-- <p class="text-gray-600 text-sm mb-6">Contact: 032-123-4567</p> <-- 삭제됨 -->
                 <p class="text-gray-700 text-xs tracking-widest">© 2025 LAMEAVE. ALL RIGHTS RESERVED.</p>
             </div>
         </div>
@@ -419,48 +420,66 @@
         const activateEditBtn = document.getElementById('activate-edit-btn');
         const passwordMessage = document.getElementById('password-message');
         const saveBtn = document.getElementById('save-btn');
+        const navReserveBtn = document.getElementById('navReserveBtn');
+        const footerReserveBtn = document.getElementById('footerReserveBtn');
         const root = document.documentElement;
         
         const PASSWORD = '8246';
 
-        // Helper function for circular progress animation
-        const setProgress = (circleId, radius, percent) => {
-            const circle = document.getElementById(circleId);
-            if (!circle) return;
-            // The circumference calculation is based on 2*PI*r
-            const circumference = 2 * Math.PI * radius;
-            circle.style.strokeDasharray = `${circumference}`;
-            // Calculate the offset to represent the percentage
-            const offset = circumference * (1 - percent / 100);
-            
-            // Timeout is used to ensure the initial CSS style (stroke-dashoffset: 1000) is applied 
-            // before the transition to the target offset begins for a smooth animation.
-            setTimeout(() => {
-                circle.style.strokeDashoffset = offset;
-            }, 50); 
-        };
+        // --- Core Functions ---
 
-        // Function to animate the bar and circle graphs
+        // Function to animate the bar chart (Graph 1 only)
         const initializeGraphs = () => {
-            // 1. Bar Chart Animation (FIXED: Using requestAnimationFrame for reliable animation start)
             document.querySelectorAll('.bar-chart-bar').forEach(bar => {
                 const percent = parseInt(bar.dataset.targetPercent);
-                
-                // Use requestAnimationFrame to ensure the browser registers the initial height (0) 
-                // before setting the final height for a smooth CSS transition.
                 requestAnimationFrame(() => {
                     bar.style.height = `${percent}%`;
                 });
             });
-
-            // 2. Circular Progress Animation
-            // PT Progress: Radius 60, Target 30%
-            setProgress('pt-progress', 60, 30);
-            // LaMeave Progress: Radius 70, Target 95%
-            setProgress('lameave-progress', 70, 95);
         };
 
-        // 1. Initial Load & Restore Content
+        // Function to apply the press reaction (NEW)
+        const applyReaction = (element) => {
+            element.classList.add('reacted');
+            // 100ms 후 복원
+            setTimeout(() => {
+                element.classList.remove('reacted');
+            }, 100); 
+        };
+
+        // Function to set up mobile/desktop reaction listeners (NEW)
+        const setupButtonReaction = (buttonElement) => {
+            if (!buttonElement) return;
+
+            // 1. Touchstart (모바일 터치 시작 시 즉시 반응)
+            buttonElement.addEventListener('touchstart', (event) => {
+                // event.preventDefault(); // 링크 이동을 위해 기본 동작 방지 안 함
+                applyReaction(buttonElement);
+            }, { passive: true }); // passive: true로 스크롤 성능 향상
+
+            // 2. Click (데스크톱 마우스 클릭)
+            // Note: 모바일에서는 touchstart -> touchend -> click 순으로 발생하지만,
+            // 터치 반응은 이미 touchstart에서 처리했으므로, click은 데스크톱용으로만 기능적으로 사용됩니다.
+            buttonElement.addEventListener('click', (event) => {
+                // 터치 기기에서는 이미 반응했으므로, 여기서는 딜레이가 있는 click에 대해서만 반응을 추가합니다.
+                applyReaction(buttonElement);
+            });
+
+            // 3. 마우스 다운/업 (데스크톱에서의 미세한 반응 개선)
+            buttonElement.addEventListener('mousedown', () => {
+                 buttonElement.classList.add('reacted');
+            });
+            buttonElement.addEventListener('mouseup', () => {
+                 buttonElement.classList.remove('reacted');
+            });
+            buttonElement.addEventListener('mouseleave', () => {
+                 buttonElement.classList.remove('reacted');
+            });
+        };
+
+
+        // --- Event Listeners and Initializers ---
+
         document.addEventListener('DOMContentLoaded', () => {
             // Restore Content
             document.querySelectorAll('.editable-text').forEach(el => {
@@ -474,9 +493,12 @@
                 fontSizeSlider.value = savedSize;
             }
 
-            // Initialize Graph Animations immediately on DOMContentLoaded
-            // This is critical to ensure the animation starts after the DOM is painted.
+            // Initialize Graph Animations
             initializeGraphs();
+
+            // Initialize Button Reactions (NEW)
+            setupButtonReaction(navReserveBtn);
+            setupButtonReaction(footerReserveBtn);
         });
 
         // 2. Settings Modal Toggle
